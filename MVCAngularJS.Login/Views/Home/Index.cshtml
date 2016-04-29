@@ -1,0 +1,49 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+  
+</head>
+<body ng-app="MyApp">
+
+    <div ng-controller="LoginController">
+        <form novalidate name="f1" ng-submit="Login()">
+            <div style="color:rgb(142,2,2)">{{Message}}</div>
+            <table ng-show="!IsLogedIn">
+                <tr>
+                    <td>Username : </td>
+                    <td>
+                        <input type="text" ng-model="LoginData.Username" name="cUsername" ng-class="Submitted?'ng-dirty':''" required autofocus />
+                        <span class="error" ng-show="(f1.cUsername.$dirty || Submitted) && f1.cUsername.$error.required">Username required</span>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Password : </td>
+                    <td>
+                        <input type="password" ng-model="LoginData.Password" name="cPassword" ng-class="Submitted?'ng-dirty':''" required autofocus />
+                        <span class="error" ng-show="(f1.cPassword.$dirty || Submitted) && f1.cPassword.$error.required">Password required</span>
+                    </td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td>
+                        <input type="submit" value="Login" />
+                    </td>
+                </tr>
+            </table>
+        </form>
+    </div>
+    <script src="~/Scripts/angular.js"></script>
+    <script src="~/Scripts/angular-route.js"></script>
+    <script src="~/Scripts/MyApp.js"></script>
+    <script src="~/Scripts/AngularController/LoginController.js"></script>
+
+</body>
+</html>
