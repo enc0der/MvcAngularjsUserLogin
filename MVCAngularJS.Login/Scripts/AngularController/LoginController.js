@@ -1,16 +1,15 @@
-﻿angular.module('MyApp') // extending from previously created angular module in the First Part
-.controller('Part3Controller', function ($scope, LoginService) {
+﻿angular.module('MyApp')
+.controller('LoginController', function ($scope, LoginService) {
     $scope.IsLogedIn = false;
     $scope.Message = '';
     $scope.Submitted = false;
     $scope.IsFormValid = false;
 
     $scope.LoginData = {
-        Username: '',
+        UserName: '',
         Password: ''
     };
 
-    //Check is Form Valid or Not // Here f1 is our form Name
     $scope.$watch('f1.$valid', function (newVal) {
         $scope.IsFormValid = newVal;
     });
@@ -19,13 +18,13 @@
         $scope.Submitted = true;
         if ($scope.IsFormValid) {
             LoginService.GetUser($scope.LoginData).then(function (d) {
-                if (d.data.Username != null) {
+                if (d.data.UserName != null) {
                     $scope.IsLogedIn = true;
-                    $scope.Message = "Successfully login done. Welcome " + d.data.FullName;
+                    $scope.Message = "Başarıyla giriş yaptınız " + d.data.FullName;
 
                 }
                 else {
-                    alert('Invalid Credential!');
+                    alert('kullanıcı bulunamadı!');
                 }
             });
         }
